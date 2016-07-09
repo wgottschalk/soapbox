@@ -1,4 +1,4 @@
-var _user$project$Main$view = function (model) {
+var _user$project$View$view = function (model) {
 	var number = model;
 	return A2(
 		_elm_lang$html$Html$div,
@@ -23,16 +23,4 @@ var _user$project$Main$view = function (model) {
 							[]))
 					]))
 			]));
-};
-var _user$project$Main$update = F2(
-	function (message, model) {
-		return model;
-	});
-var _user$project$Main$initialModel = function (num) {
-	return _elm_lang$core$Basics$toString(num);
-};
-var _user$project$Main$model = 'Hello';
-var _user$project$Main$main = {
-	main: _elm_lang$html$Html_App$beginnerProgram(
-		{view: _user$project$Main$view, model: _user$project$Main$model, update: _user$project$Main$update})
 };

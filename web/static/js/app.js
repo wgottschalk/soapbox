@@ -14,7 +14,7 @@
 import "phoenix_html"
 
 const elmDiv = document.getElementById('elm-container');
-const elmApp = Elm.App.embed(elmDiv);
+const elmApp = Elm.Main.embed(elmDiv);
 // Import local files
 //
 // Local files can be imported directly using relative
