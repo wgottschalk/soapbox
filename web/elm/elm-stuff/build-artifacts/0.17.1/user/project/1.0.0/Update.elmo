@@ -1,4 +1,0 @@
-var _user$project$Update$update = F2(
-	function (message, model) {
-		return model;
-	});

@@ -1,4 +1,0 @@
-var _user$project$Model$initialModel = function (num) {
-	return _elm_lang$core$Basics$toString(num);
-};
-var _user$project$Model$model = 'Hello';

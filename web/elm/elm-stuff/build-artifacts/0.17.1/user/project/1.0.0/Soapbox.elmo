@@ -1,4 +1,4 @@
-var _user$project$Main$createCard = function (cardInfo) {
+var _user$project$Soapbox$createCard = function (cardInfo) {
 	return A2(
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
@@ -42,59 +42,59 @@ var _user$project$Main$createCard = function (cardInfo) {
 					]))
 			]));
 };
-var _user$project$Main$dateString = _elm_lang$core$Native_Platform.outgoingPort(
+var _user$project$Soapbox$dateString = _elm_lang$core$Native_Platform.outgoingPort(
 	'dateString',
 	function (v) {
 		return v;
 	});
-var _user$project$Main$moment = _elm_lang$core$Native_Platform.incomingPort('moment', _elm_lang$core$Json_Decode$string);
-var _user$project$Main$Movie = F4(
+var _user$project$Soapbox$moment = _elm_lang$core$Native_Platform.incomingPort('moment', _elm_lang$core$Json_Decode$string);
+var _user$project$Soapbox$Movie = F4(
 	function (a, b, c, d) {
 		return {title: a, summary: b, img_url: c, release_date: d};
 	});
-var _user$project$Main$movieDecoder = A5(
+var _user$project$Soapbox$movieDecoder = A5(
 	_elm_lang$core$Json_Decode$object4,
-	_user$project$Main$Movie,
+	_user$project$Soapbox$Movie,
 	A2(_elm_lang$core$Json_Decode_ops[':='], 'title', _elm_lang$core$Json_Decode$string),
 	A2(_elm_lang$core$Json_Decode_ops[':='], 'summary', _elm_lang$core$Json_Decode$string),
 	A2(_elm_lang$core$Json_Decode_ops[':='], 'img_url', _elm_lang$core$Json_Decode$string),
 	A2(_elm_lang$core$Json_Decode_ops[':='], 'release_date', _elm_lang$core$Json_Decode$string));
-var _user$project$Main$decoder = A2(
+var _user$project$Soapbox$decoder = A2(
 	_elm_lang$core$Json_Decode_ops[':='],
 	'movies',
-	_elm_lang$core$Json_Decode$list(_user$project$Main$movieDecoder));
-var _user$project$Main$Model = function (a) {
+	_elm_lang$core$Json_Decode$list(_user$project$Soapbox$movieDecoder));
+var _user$project$Soapbox$Model = function (a) {
 	return {movies: a};
 };
-var _user$project$Main$Convert = {ctor: 'Convert'};
-var _user$project$Main$Date = function (a) {
+var _user$project$Soapbox$Convert = {ctor: 'Convert'};
+var _user$project$Soapbox$Date = function (a) {
 	return {ctor: 'Date', _0: a};
 };
-var _user$project$Main$subscriptions = function (model) {
-	return _user$project$Main$moment(_user$project$Main$Date);
+var _user$project$Soapbox$subscriptions = function (model) {
+	return _user$project$Soapbox$moment(_user$project$Soapbox$Date);
 };
-var _user$project$Main$FetchFail = function (a) {
+var _user$project$Soapbox$FetchFail = function (a) {
 	return {ctor: 'FetchFail', _0: a};
 };
-var _user$project$Main$FetchSucceed = function (a) {
+var _user$project$Soapbox$FetchSucceed = function (a) {
 	return {ctor: 'FetchSucceed', _0: a};
 };
-var _user$project$Main$fetch = function (resource) {
+var _user$project$Soapbox$fetch = function (resource) {
 	var url = A2(_elm_lang$core$Basics_ops['++'], 'http://localhost:4000', resource);
 	return A3(
 		_elm_lang$core$Task$perform,
-		_user$project$Main$FetchFail,
-		_user$project$Main$FetchSucceed,
-		A2(_evancz$elm_http$Http$get, _user$project$Main$decoder, url));
+		_user$project$Soapbox$FetchFail,
+		_user$project$Soapbox$FetchSucceed,
+		A2(_evancz$elm_http$Http$get, _user$project$Soapbox$decoder, url));
 };
-var _user$project$Main$init = {
+var _user$project$Soapbox$init = {
 	ctor: '_Tuple2',
-	_0: _user$project$Main$Model(
+	_0: _user$project$Soapbox$Model(
 		_elm_lang$core$Native_List.fromArray(
 			[])),
-	_1: _user$project$Main$fetch('/api/now_playing')
+	_1: _user$project$Soapbox$fetch('/api/now_playing')
 };
-var _user$project$Main$update = F2(
+var _user$project$Soapbox$update = F2(
 	function (message, model) {
 		var _p0 = message;
 		switch (_p0.ctor) {
@@ -102,24 +102,24 @@ var _user$project$Main$update = F2(
 				return {
 					ctor: '_Tuple2',
 					_0: model,
-					_1: _user$project$Main$fetch('/api/now_playing')
+					_1: _user$project$Soapbox$fetch('/api/now_playing')
 				};
 			case 'ComingSoon':
 				return {
 					ctor: '_Tuple2',
 					_0: model,
-					_1: _user$project$Main$fetch('/api/coming_soon')
+					_1: _user$project$Soapbox$fetch('/api/coming_soon')
 				};
 			case 'ShowFriends':
 				return {
 					ctor: '_Tuple2',
 					_0: model,
-					_1: _user$project$Main$fetch('/api/friends')
+					_1: _user$project$Soapbox$fetch('/api/friends')
 				};
 			case 'FetchSucceed':
 				return {
 					ctor: '_Tuple2',
-					_0: _user$project$Main$Model(_p0._0),
+					_0: _user$project$Soapbox$Model(_p0._0),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			case 'FetchFail':
@@ -144,14 +144,14 @@ var _user$project$Main$update = F2(
 				};
 		}
 	});
-var _user$project$Main$ShowFriends = {ctor: 'ShowFriends'};
-var _user$project$Main$ComingSoon = {ctor: 'ComingSoon'};
-var _user$project$Main$NowPlaying = {ctor: 'NowPlaying'};
-var _user$project$Main$navbar = A2(
-	_elm_lang$html$Html$nav,
+var _user$project$Soapbox$ShowFriends = {ctor: 'ShowFriends'};
+var _user$project$Soapbox$ComingSoon = {ctor: 'ComingSoon'};
+var _user$project$Soapbox$NowPlaying = {ctor: 'NowPlaying'};
+var _user$project$Soapbox$navbar = A2(
+	_elm_lang$html$Html$div,
 	_elm_lang$core$Native_List.fromArray(
 		[
-			_elm_lang$html$Html_Attributes$class('navbar container-fluid')
+			_elm_lang$html$Html_Attributes$class('navbar')
 		]),
 	_elm_lang$core$Native_List.fromArray(
 		[
@@ -167,8 +167,7 @@ var _user$project$Main$navbar = A2(
 					_elm_lang$html$Html$li,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_elm_lang$html$Html_Events$onClick(_user$project$Main$NowPlaying),
-							_elm_lang$html$Html_Attributes$class('col-xs-4')
+							_elm_lang$html$Html_Events$onClick(_user$project$Soapbox$NowPlaying)
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -178,8 +177,7 @@ var _user$project$Main$navbar = A2(
 					_elm_lang$html$Html$li,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_elm_lang$html$Html_Events$onClick(_user$project$Main$ComingSoon),
-							_elm_lang$html$Html_Attributes$class('col-xs-4')
+							_elm_lang$html$Html_Events$onClick(_user$project$Soapbox$ComingSoon)
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -189,8 +187,7 @@ var _user$project$Main$navbar = A2(
 					_elm_lang$html$Html$li,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_elm_lang$html$Html_Events$onClick(_user$project$Main$ShowFriends),
-							_elm_lang$html$Html_Attributes$class('col-xs-4')
+							_elm_lang$html$Html_Events$onClick(_user$project$Soapbox$ShowFriends)
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -198,11 +195,11 @@ var _user$project$Main$navbar = A2(
 						]))
 				]))
 		]));
-var _user$project$Main$view = function (model) {
+var _user$project$Soapbox$view = function (model) {
 	var movies = A2(
 		_elm_lang$core$List$map,
 		function (cardData) {
-			return _user$project$Main$createCard(cardData);
+			return _user$project$Soapbox$createCard(cardData);
 		},
 		model.movies);
 	return A2(
@@ -211,15 +208,23 @@ var _user$project$Main$view = function (model) {
 			[]),
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_user$project$Main$navbar,
+				_user$project$Soapbox$navbar,
 				A2(
 				_elm_lang$html$Html$ul,
 				_elm_lang$core$Native_List.fromArray(
 					[]),
-				movies)
+				movies),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text('hello')
+					]))
 			]));
 };
-var _user$project$Main$main = {
+var _user$project$Soapbox$main = {
 	main: _elm_lang$html$Html_App$program(
-		{view: _user$project$Main$view, init: _user$project$Main$init, update: _user$project$Main$update, subscriptions: _user$project$Main$subscriptions})
+		{view: _user$project$Soapbox$view, init: _user$project$Soapbox$init, update: _user$project$Soapbox$update, subscriptions: _user$project$Soapbox$subscriptions})
 };

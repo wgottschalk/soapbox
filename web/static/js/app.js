@@ -12,9 +12,15 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
+import moment from "moment"
 
-const elmDiv = document.getElementById('elm-container');
-const elmApp = Elm.Main.embed(elmDiv);
+const elm = Elm.Main.fullscreen()
+
+elm.ports.dateString.subscribe(function momentPort(dateString) {
+  const date = moment(dateString).format("dddd MMMM Do YYYY")
+  console.log(dateString, date)
+  elm.ports.moment.send(date)
+})
 // Import local files
 //
 // Local files can be imported directly using relative
