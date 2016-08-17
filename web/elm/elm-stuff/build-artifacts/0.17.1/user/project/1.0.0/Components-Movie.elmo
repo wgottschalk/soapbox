@@ -1,0 +1,63 @@
+var _user$project$Components_Movie$view = function (_p0) {
+	var _p1 = _p0;
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$class('movie')
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$h2,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(_p1.title)
+					])),
+				A2(
+				_elm_lang$html$Html$p,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(_p1.release_date)
+					])),
+				A2(
+				_elm_lang$html$Html$hr,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[])),
+				A2(
+				_elm_lang$html$Html$img,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$src(_p1.img_url)
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[])),
+				A2(
+				_elm_lang$html$Html$p,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(_p1.summary)
+					]))
+			]));
+};
+var _user$project$Components_Movie$update = F2(
+	function (msg, model) {
+		return model;
+	});
+var _user$project$Components_Movie$Model = F4(
+	function (a, b, c, d) {
+		return {title: a, summary: b, img_url: c, release_date: d};
+	});
+var _user$project$Components_Movie$Friend = F3(
+	function (a, b, c) {
+		return {username: a, age: b, profile_url: c};
+	});
+var _user$project$Components_Movie$Msg = {ctor: 'Msg'};

@@ -1,0 +1,75 @@
+var _user$project$Components_Navbar$isActive = F2(
+	function (activeTab, tabName) {
+		return _elm_lang$core$Native_Utils.eq(activeTab, tabName) ? 'active' : 'inactive';
+	});
+var _user$project$Components_Navbar$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'NowPlaying':
+				return 'Now Playing';
+			case 'ComingSoon':
+				return 'Coming Soon';
+			default:
+				return 'Friends';
+		}
+	});
+var _user$project$Components_Navbar$ShowFriends = {ctor: 'ShowFriends'};
+var _user$project$Components_Navbar$ComingSoon = {ctor: 'ComingSoon'};
+var _user$project$Components_Navbar$NowPlaying = {ctor: 'NowPlaying'};
+var _user$project$Components_Navbar$view = function (navbar) {
+	return A2(
+		_elm_lang$html$Html$nav,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$class('navbar container-fluid')
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$ul,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$class('menu-items')
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A2(
+						_elm_lang$html$Html$li,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$class(
+								A2(_user$project$Components_Navbar$isActive, navbar, 'Now Playing')),
+								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$NowPlaying)
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Now Playing')
+							])),
+						A2(
+						_elm_lang$html$Html$li,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$class(
+								A2(_user$project$Components_Navbar$isActive, navbar, 'Coming Soon')),
+								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$ComingSoon)
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Coming Soon')
+							])),
+						A2(
+						_elm_lang$html$Html$li,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$class(
+								A2(_user$project$Components_Navbar$isActive, navbar, 'Friends')),
+								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$ShowFriends)
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Friends')
+							]))
+					]))
+			]));
+};

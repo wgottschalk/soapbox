@@ -1,0 +1,52 @@
+var _user$project$Components_Friend$view = function (_p0) {
+	var _p1 = _p0;
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$class('movie')
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$h2,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(_p1.username)
+					])),
+				A2(
+				_elm_lang$html$Html$img,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$src(_p1.profile_url)
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[])),
+				A2(
+				_elm_lang$html$Html$hr,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[])),
+				A2(
+				_elm_lang$html$Html$p,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(_p1.age))
+					]))
+			]));
+};
+var _user$project$Components_Friend$update = F2(
+	function (msg, model) {
+		return model;
+	});
+var _user$project$Components_Friend$Model = F3(
+	function (a, b, c) {
+		return {username: a, age: b, profile_url: c};
+	});
+var _user$project$Components_Friend$Msg = {ctor: 'Msg'};
