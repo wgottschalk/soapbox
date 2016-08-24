@@ -1,4 +1,0 @@
-var _user$project$Generics_Card$CardClass = F2(
-	function (a, b) {
-		return {view: a, update: b};
-	});

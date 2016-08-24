@@ -1,6 +1,6 @@
 module Components.Movie exposing (..)
 
-import Html exposing (Html, div, h2, p, hr, img, text)
+import Html exposing (Html, div, h2, p, hr, img, text, span)
 import Html.App as App
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (class, src)
@@ -12,8 +12,8 @@ import Html.Attributes exposing (class, src)
 type alias Model =
     { title : String
     , summary : String
-    , img_url : String
     , release_date : String
+    , img_url : String
     }
 
 
@@ -43,10 +43,11 @@ update msg model =
 
 view : Model -> Html a
 view { title, summary, img_url, release_date } =
-    div [ class "movie" ]
-        [ h2 [] [ text title ]
-        , p [] [ text release_date ]
-        , hr [] []
+    div [ class "card" ]
+        [ div []
+            [ h2 [] [ text title ]
+            , span [] [ text ("Release Date: " ++ release_date) ]
+            ]
         , img [ src img_url ] []
-        , p [] [ text summary ]
+        , p [ class "description" ] [ text summary ]
         ]

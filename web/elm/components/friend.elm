@@ -35,7 +35,7 @@ update msg model =
 
 view : Model -> Html a
 view { username, age, profile_url } =
-    div [ class "movie" ]
+    div [ class "card" ]
         [ h2 [] [ text username ]
         , img [ src profile_url ] []
         , hr [] []

@@ -4,32 +4,34 @@ var _user$project$Components_Movie$view = function (_p0) {
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html_Attributes$class('movie')
+				_elm_lang$html$Html_Attributes$class('card')
 			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
 				A2(
-				_elm_lang$html$Html$h2,
+				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
 					[]),
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html$text(_p1.title)
+						A2(
+						_elm_lang$html$Html$h2,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(_p1.title)
+							])),
+						A2(
+						_elm_lang$html$Html$span,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(
+								A2(_elm_lang$core$Basics_ops['++'], 'Release Date: ', _p1.release_date))
+							]))
 					])),
-				A2(
-				_elm_lang$html$Html$p,
-				_elm_lang$core$Native_List.fromArray(
-					[]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html$text(_p1.release_date)
-					])),
-				A2(
-				_elm_lang$html$Html$hr,
-				_elm_lang$core$Native_List.fromArray(
-					[]),
-				_elm_lang$core$Native_List.fromArray(
-					[])),
 				A2(
 				_elm_lang$html$Html$img,
 				_elm_lang$core$Native_List.fromArray(
@@ -41,7 +43,9 @@ var _user$project$Components_Movie$view = function (_p0) {
 				A2(
 				_elm_lang$html$Html$p,
 				_elm_lang$core$Native_List.fromArray(
-					[]),
+					[
+						_elm_lang$html$Html_Attributes$class('description')
+					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
 						_elm_lang$html$Html$text(_p1.summary)
@@ -54,7 +58,7 @@ var _user$project$Components_Movie$update = F2(
 	});
 var _user$project$Components_Movie$Model = F4(
 	function (a, b, c, d) {
-		return {title: a, summary: b, img_url: c, release_date: d};
+		return {title: a, summary: b, release_date: c, img_url: d};
 	});
 var _user$project$Components_Movie$Friend = F3(
 	function (a, b, c) {

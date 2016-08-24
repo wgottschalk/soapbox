@@ -22,7 +22,7 @@ var _user$project$Components_Navbar$view = function (navbar) {
 		_elm_lang$html$Html$nav,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html_Attributes$class('navbar container-fluid')
+				_elm_lang$html$Html_Attributes$class('navbar')
 			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
@@ -30,7 +30,7 @@ var _user$project$Components_Navbar$view = function (navbar) {
 				_elm_lang$html$Html$ul,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$class('menu-items')
+						_elm_lang$html$Html_Attributes$class('menu-items row')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
@@ -39,7 +39,10 @@ var _user$project$Components_Navbar$view = function (navbar) {
 						_elm_lang$core$Native_List.fromArray(
 							[
 								_elm_lang$html$Html_Attributes$class(
-								A2(_user$project$Components_Navbar$isActive, navbar, 'Now Playing')),
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									'col-4 ',
+									A2(_user$project$Components_Navbar$isActive, navbar, 'Now Playing'))),
 								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$NowPlaying)
 							]),
 						_elm_lang$core$Native_List.fromArray(
@@ -51,7 +54,10 @@ var _user$project$Components_Navbar$view = function (navbar) {
 						_elm_lang$core$Native_List.fromArray(
 							[
 								_elm_lang$html$Html_Attributes$class(
-								A2(_user$project$Components_Navbar$isActive, navbar, 'Coming Soon')),
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									'col-4 ',
+									A2(_user$project$Components_Navbar$isActive, navbar, 'Coming Soon'))),
 								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$ComingSoon)
 							]),
 						_elm_lang$core$Native_List.fromArray(
@@ -63,7 +69,10 @@ var _user$project$Components_Navbar$view = function (navbar) {
 						_elm_lang$core$Native_List.fromArray(
 							[
 								_elm_lang$html$Html_Attributes$class(
-								A2(_user$project$Components_Navbar$isActive, navbar, 'Friends')),
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									'col-4 ',
+									A2(_user$project$Components_Navbar$isActive, navbar, 'Friends'))),
 								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$ShowFriends)
 							]),
 						_elm_lang$core$Native_List.fromArray(

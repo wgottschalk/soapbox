@@ -21,21 +21,27 @@ defmodule Soapbox.MovieController do
     |> json(%{movies: scrub_movies(results)})
   end
 
-  @base_url "https://image.tmdb.org/t/p/w185"
+  @base_url "https://image.tmdb.org/t/p/w500_and_h281_bestv2"
   defp scrub_movies(movieList) do
     Enum.map movieList, fn(movie) ->
-      img_url = if movie["poster_path"] do
-        @base_url <> movie["poster_path"]
+      img_url = if movie["backdrop_path"] do
+        @base_url <> movie["backdrop_path"]
       else
         ""
       end
+
       %{
         title: movie["title"],
         summary: movie["overview"],
         img_url: img_url,
-        release_date: movie["release_date"]
+        release_date: format_date movie["release_date"]
       }
     end
 
+  end
+
+  defp format_date(date_string) do
+    Date.from_iso8601!(date_string)
+    |> Timex.format!("{WDfull} {Mshort} {D} {YYYY}")
   end
 end

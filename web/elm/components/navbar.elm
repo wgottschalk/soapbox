@@ -45,11 +45,11 @@ update msg model =
 
 view : Model -> Html Msg
 view navbar =
-    nav [ class "navbar container-fluid" ]
-        [ ul [ class "menu-items" ]
-            [ li [ class (isActive navbar "Now Playing"), onClick NowPlaying ] [ text "Now Playing" ]
-            , li [ class (isActive navbar "Coming Soon"), onClick ComingSoon ] [ text "Coming Soon" ]
-            , li [ class (isActive navbar "Friends"), onClick ShowFriends ] [ text "Friends" ]
+    nav [ class "navbar" ]
+        [ ul [ class "menu-items row" ]
+            [ li [ class ("col-4 " ++ (isActive navbar "Now Playing")), onClick NowPlaying ] [ text "Now Playing" ]
+            , li [ class ("col-4 " ++ (isActive navbar "Coming Soon")), onClick ComingSoon ] [ text "Coming Soon" ]
+            , li [ class ("col-4 " ++ (isActive navbar "Friends")), onClick ShowFriends ] [ text "Friends" ]
             ]
         ]
 

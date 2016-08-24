@@ -7,10 +7,16 @@ import Html.Attributes exposing (class)
 import Components.Feed as Feed
 import Components.Navbar as Navbar
 import Components.Movie as Movie
+import Components.Friend as Friend
+import Task exposing (Task)
+import Http exposing (Error, Data)
+import Json.Decode exposing (Decoder, (:=), string, object4, object3, list, int, oneOf)
 
 
 type Msg
     = ChangeTab Navbar.Msg
+    | Success (List Feed.Card)
+    | Failed Error
 
 
 type alias Model =
@@ -21,7 +27,7 @@ type alias Model =
 
 init : ( Model, Cmd Msg )
 init =
-    Model "Now Playing" [ Feed.Movie <| Movie.Model "The Title!" "this is a summary" "none" "July 10" ] ! []
+    Model "Now Playing" [] ! [ fetchMovies "Now Playing" ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -32,7 +38,54 @@ update msg model =
                 newTab =
                     Navbar.update tabName model.navbar
             in
-                (Model newTab <| List.repeat 5 <| Feed.Movie <| Movie.Model newTab "this is a summary" "none" "July 10") ! []
+                ( { model | navbar = newTab }, fetchMovies newTab )
+
+        Success movieList ->
+            { model | feed = movieList } ! []
+
+        Failed error ->
+            model ! []
+
+
+fetchMovies : String -> Cmd Msg
+fetchMovies tabName =
+    case tabName of
+        "Now Playing" ->
+            Task.perform Failed Success <| (getFeedItems "now_playing")
+
+        "Coming Soon" ->
+            Task.perform Failed Success <| (getFeedItems "coming_soon")
+
+        _ ->
+            Cmd.none
+
+
+getFeedItems : String -> Task Error (List Feed.Card)
+getFeedItems url =
+    Http.get movieListDecoder ("http://localhost:4000/api/" ++ url)
+
+
+movieListDecoder : Decoder (List Feed.Card)
+movieListDecoder =
+    "movies"
+        := list (oneOf [ movieObjects, friendObjects ])
+
+
+movieObjects : Decoder Feed.Card
+movieObjects =
+    object4 (\a b c d -> Feed.Movie (Movie.Model a b c d))
+        ("title" := string)
+        ("summary" := string)
+        ("release_date" := string)
+        ("img_url" := string)
+
+
+friendObjects : Decoder Feed.Card
+friendObjects =
+    object3 (\a b c -> Feed.Friend (Friend.Model a b c))
+        ("username" := string)
+        ("age" := int)
+        ("profile" := string)
 
 
 view : Model -> Html Msg
