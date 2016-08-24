@@ -44,10 +44,12 @@ update msg model =
 view : Model -> Html a
 view { title, summary, img_url, release_date } =
     div [ class "card" ]
-        [ div []
+        [ div [ class "footing" ]
             [ h2 [] [ text title ]
-            , span [] [ text ("Release Date: " ++ release_date) ]
+            , span [] [ text release_date ]
             ]
         , img [ src img_url ] []
-        , p [ class "description" ] [ text summary ]
+          -- , div [ class "footing" ]
+          --     [ p [ class "description" ] [ text summary ]
+          --     ]
         ]

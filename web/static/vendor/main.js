@@ -8566,7 +8566,9 @@ var _user$project$Components_Movie$view = function (_p0) {
 				A2(
 				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
-					[]),
+					[
+						_elm_lang$html$Html_Attributes$class('footing')
+					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
 						A2(
@@ -8583,8 +8585,7 @@ var _user$project$Components_Movie$view = function (_p0) {
 							[]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html$text(
-								A2(_elm_lang$core$Basics_ops['++'], 'Release Date: ', _p1.release_date))
+								_elm_lang$html$Html$text(_p1.release_date)
 							]))
 					])),
 				A2(
@@ -8594,17 +8595,7 @@ var _user$project$Components_Movie$view = function (_p0) {
 						_elm_lang$html$Html_Attributes$src(_p1.img_url)
 					]),
 				_elm_lang$core$Native_List.fromArray(
-					[])),
-				A2(
-				_elm_lang$html$Html$p,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$class('description')
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html$text(_p1.summary)
-					]))
+					[]))
 			]));
 };
 var _user$project$Components_Movie$update = F2(
