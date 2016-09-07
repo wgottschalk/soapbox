@@ -4,6 +4,8 @@ import Html exposing (Html, div, h2, p, hr, img, text, span)
 import Html.App as App
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (class, src)
+import Style
+import Style.Properties exposing (..)
 
 
 -- Model
@@ -12,20 +14,31 @@ import Html.Attributes exposing (class, src)
 type alias Model =
     { title : String
     , summary : String
-    , release_date : String
-    , img_url : String
-    }
-
-
-type alias Friend =
-    { username : String
-    , age : Int
-    , profile_url : String
+    , releaseDate : String
+    , imgUrl : String
+    , style : Style.Animation
     }
 
 
 type Msg
     = Msg
+
+
+
+-- init
+
+
+init : String -> String -> String -> String -> Model
+init title summary releaseDate imgUrl =
+    let
+        style =
+            Style.init
+                [ Opacity 0.0
+                , Width 100.0 Px
+                , Height 281.0 Px
+                ]
+    in
+        Model title summary releaseDate imgUrl style
 
 
 
@@ -42,14 +55,12 @@ update msg model =
 
 
 view : Model -> Html a
-view { title, summary, img_url, release_date } =
+view model =
     div [ class "card" ]
-        [ div [ class "footing" ]
-            [ h2 [] [ text title ]
-            , span [] [ text release_date ]
+        [ img [ src model.imgUrl ] []
+        , div [ class "card-overlay" ]
+            [ h2 [] [ text model.title ]
+            , span [] [ text model.releaseDate ]
+            , p [ class "description" ] [ text model.summary ]
             ]
-        , img [ src img_url ] []
-          -- , div [ class "footing" ]
-          --     [ p [ class "description" ] [ text summary ]
-          --     ]
         ]

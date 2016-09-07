@@ -1,5 +1,4 @@
-var _user$project$Components_Movie$view = function (_p0) {
-	var _p1 = _p0;
+var _user$project$Components_Movie$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
@@ -9,10 +8,18 @@ var _user$project$Components_Movie$view = function (_p0) {
 		_elm_lang$core$Native_List.fromArray(
 			[
 				A2(
+				_elm_lang$html$Html$img,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$src(model.imgUrl)
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[])),
+				A2(
 				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$class('footing')
+						_elm_lang$html$Html_Attributes$class('card-overlay')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
@@ -22,7 +29,7 @@ var _user$project$Components_Movie$view = function (_p0) {
 							[]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html$text(_p1.title)
+								_elm_lang$html$Html$text(model.title)
 							])),
 						A2(
 						_elm_lang$html$Html$span,
@@ -30,29 +37,38 @@ var _user$project$Components_Movie$view = function (_p0) {
 							[]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html$text(_p1.release_date)
+								_elm_lang$html$Html$text(model.releaseDate)
+							])),
+						A2(
+						_elm_lang$html$Html$p,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$class('description')
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(model.summary)
 							]))
-					])),
-				A2(
-				_elm_lang$html$Html$img,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$src(_p1.img_url)
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[]))
+					]))
 			]));
 };
 var _user$project$Components_Movie$update = F2(
 	function (msg, model) {
 		return model;
 	});
-var _user$project$Components_Movie$Model = F4(
-	function (a, b, c, d) {
-		return {title: a, summary: b, release_date: c, img_url: d};
+var _user$project$Components_Movie$Model = F5(
+	function (a, b, c, d, e) {
+		return {title: a, summary: b, releaseDate: c, imgUrl: d, style: e};
 	});
-var _user$project$Components_Movie$Friend = F3(
-	function (a, b, c) {
-		return {username: a, age: b, profile_url: c};
+var _user$project$Components_Movie$init = F4(
+	function (title, summary, releaseDate, imgUrl) {
+		var style = _mdgriffith$elm_style_animation$Style$init(
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_mdgriffith$elm_style_animation$Style_Properties$Opacity(0.0),
+					A2(_mdgriffith$elm_style_animation$Style_Properties$Width, 100.0, _mdgriffith$elm_style_animation$Style_Properties$Px),
+					A2(_mdgriffith$elm_style_animation$Style_Properties$Height, 281.0, _mdgriffith$elm_style_animation$Style_Properties$Px)
+				]));
+		return A5(_user$project$Components_Movie$Model, title, summary, releaseDate, imgUrl, style);
 	});
 var _user$project$Components_Movie$Msg = {ctor: 'Msg'};

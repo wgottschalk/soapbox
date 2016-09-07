@@ -1,4 +1,4 @@
-module Components.App exposing (Model, Msg, init, view, update)
+module Components.App exposing (Model, Msg(..), init, view, update)
 
 import Html exposing (Html, nav, ul, li, text, div)
 import Html.App as App
@@ -11,12 +11,15 @@ import Components.Friend as Friend
 import Task exposing (Task)
 import Http exposing (Error, Data)
 import Json.Decode exposing (Decoder, (:=), string, object4, object3, list, int, oneOf)
+import Time exposing (Time, second)
 
 
 type Msg
     = ChangeTab Navbar.Msg
     | Success (List Feed.Card)
     | Failed Error
+    | Animate Time
+    | Show
 
 
 type alias Model =
@@ -46,6 +49,12 @@ update msg model =
         Failed error ->
             model ! []
 
+        Show ->
+            model ! []
+
+        Animate time ->
+            model ! []
+
 
 fetchMovies : String -> Cmd Msg
 fetchMovies tabName =
@@ -73,7 +82,7 @@ movieListDecoder =
 
 movieObjects : Decoder Feed.Card
 movieObjects =
-    object4 (\a b c d -> Feed.Movie (Movie.Model a b c d))
+    object4 (\a b c d -> Feed.Movie (Movie.init a b c d))
         ("title" := string)
         ("summary" := string)
         ("release_date" := string)

@@ -18,15 +18,21 @@ defmodule Soapbox.MovieController do
     {:ok, %{"results" => results}} = Poison.decode body
     conn
     |> put_status(200)
-    |> json(%{movies: scrub_movies(results)})
+    |> json(%{movies: Enum.reverse scrub_movies(results)})
   end
 
+  # backdrop_path
   # @base_url "https://image.tmdb.org/t/p/w500_and_h281_bestv2"
+  # poster_path
   @base_url "https://image.tmdb.org/t/p/w300_and_h450_bestv2"
-  defp scrub_movies(movieList) do
-    Enum.map movieList, fn(movie) ->
-      # backdrop_path
-      # poster_path
+  defp scrub_movies(movie_list) do
+    movie_list
+    |> Enum.sort(fn (movie_a, movie_b) ->
+      date_a = Date.from_iso8601!(movie_a["release_date"])
+      date_b = Date.from_iso8601!(movie_b["release_date"])
+      Timex.compare(date_a, date_b, :days) > 0
+    end)
+    |> Enum.map fn(movie) ->
       img_url = if movie["poster_path"] do
         @base_url <> movie["poster_path"]
       else
