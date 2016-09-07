@@ -16651,10 +16651,6 @@ var _user$project$Components_App$Model = F2(
 	function (a, b) {
 		return {navbar: a, feed: b};
 	});
-var _user$project$Components_App$Show = {ctor: 'Show'};
-var _user$project$Components_App$Animate = function (a) {
-	return {ctor: 'Animate', _0: a};
-};
 var _user$project$Components_App$Failed = function (a) {
 	return {ctor: 'Failed', _0: a};
 };
@@ -16712,18 +16708,6 @@ var _user$project$Components_App$update = F2(
 						{feed: _p1._0}),
 					_elm_lang$core$Native_List.fromArray(
 						[]));
-			case 'Failed':
-				return A2(
-					_elm_lang$core$Platform_Cmd_ops['!'],
-					model,
-					_elm_lang$core$Native_List.fromArray(
-						[]));
-			case 'Show':
-				return A2(
-					_elm_lang$core$Platform_Cmd_ops['!'],
-					model,
-					_elm_lang$core$Native_List.fromArray(
-						[]));
 			default:
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
@@ -16751,7 +16735,7 @@ var _user$project$Components_App$view = function (model) {
 };
 
 var _user$project$Main$subscriptions = function (model) {
-	return _elm_lang$animation_frame$AnimationFrame$times(_user$project$Components_App$Animate);
+	return _elm_lang$core$Platform_Sub$none;
 };
 var _user$project$Main$main = {
 	main: _elm_lang$html$Html_App$program(

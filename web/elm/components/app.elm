@@ -11,15 +11,12 @@ import Components.Friend as Friend
 import Task exposing (Task)
 import Http exposing (Error, Data)
 import Json.Decode exposing (Decoder, (:=), string, object4, object3, list, int, oneOf)
-import Time exposing (Time, second)
 
 
 type Msg
     = ChangeTab Navbar.Msg
     | Success (List Feed.Card)
     | Failed Error
-    | Animate Time
-    | Show
 
 
 type alias Model =
@@ -49,21 +46,17 @@ update msg model =
         Failed error ->
             model ! []
 
-        Show ->
-            model ! []
-
-        Animate time ->
-            model ! []
-
 
 fetchMovies : String -> Cmd Msg
 fetchMovies tabName =
     case tabName of
         "Now Playing" ->
-            Task.perform Failed Success <| (getFeedItems "now_playing")
+            getFeedItems "now_playing"
+                |> Task.perform Failed Success
 
         "Coming Soon" ->
-            Task.perform Failed Success <| (getFeedItems "coming_soon")
+            getFeedItems "coming_soon"
+                |> Task.perform Failed Success
 
         _ ->
             Cmd.none

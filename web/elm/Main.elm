@@ -7,7 +7,7 @@ import AnimationFrame
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    AnimationFrame.times Components.App.Animate
+    Sub.none
 
 
 main : Program Never
