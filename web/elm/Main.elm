@@ -1,13 +1,21 @@
 module Main exposing (main)
 
 import Html.App as App
-import Components.App exposing (Msg, Model, init, view, update)
-import AnimationFrame
+import Model exposing (Model)
+import Update exposing (update)
+import View.App exposing (view)
+import Types exposing (Msg(..))
+import Commands.Request exposing (fetchMovies)
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
+
+
+init : ( Model, Cmd Msg )
+init =
+    Model "Now Playing" [] ! [ fetchMovies "Now Playing" ]
 
 
 main : Program Never

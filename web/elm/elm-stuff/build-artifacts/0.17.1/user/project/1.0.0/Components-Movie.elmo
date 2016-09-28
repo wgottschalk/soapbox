@@ -52,23 +52,3 @@ var _user$project$Components_Movie$view = function (model) {
 					]))
 			]));
 };
-var _user$project$Components_Movie$update = F2(
-	function (msg, model) {
-		return model;
-	});
-var _user$project$Components_Movie$Model = F5(
-	function (a, b, c, d, e) {
-		return {title: a, summary: b, releaseDate: c, imgUrl: d, style: e};
-	});
-var _user$project$Components_Movie$init = F4(
-	function (title, summary, releaseDate, imgUrl) {
-		var style = _mdgriffith$elm_style_animation$Style$init(
-			_elm_lang$core$Native_List.fromArray(
-				[
-					_mdgriffith$elm_style_animation$Style_Properties$Opacity(0.0),
-					A2(_mdgriffith$elm_style_animation$Style_Properties$Width, 100.0, _mdgriffith$elm_style_animation$Style_Properties$Px),
-					A2(_mdgriffith$elm_style_animation$Style_Properties$Height, 281.0, _mdgriffith$elm_style_animation$Style_Properties$Px)
-				]));
-		return A5(_user$project$Components_Movie$Model, title, summary, releaseDate, imgUrl, style);
-	});
-var _user$project$Components_Movie$Msg = {ctor: 'Msg'};

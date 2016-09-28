@@ -2,21 +2,6 @@ var _user$project$Components_Navbar$isActive = F2(
 	function (activeTab, tabName) {
 		return _elm_lang$core$Native_Utils.eq(activeTab, tabName) ? 'active' : 'inactive';
 	});
-var _user$project$Components_Navbar$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'NowPlaying':
-				return 'Now Playing';
-			case 'ComingSoon':
-				return 'Coming Soon';
-			default:
-				return 'Friends';
-		}
-	});
-var _user$project$Components_Navbar$ShowFriends = {ctor: 'ShowFriends'};
-var _user$project$Components_Navbar$ComingSoon = {ctor: 'ComingSoon'};
-var _user$project$Components_Navbar$NowPlaying = {ctor: 'NowPlaying'};
 var _user$project$Components_Navbar$view = function (navbar) {
 	return A2(
 		_elm_lang$html$Html$nav,
@@ -43,7 +28,7 @@ var _user$project$Components_Navbar$view = function (navbar) {
 									_elm_lang$core$Basics_ops['++'],
 									'col-4 ',
 									A2(_user$project$Components_Navbar$isActive, navbar, 'Now Playing'))),
-								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$NowPlaying)
+								_elm_lang$html$Html_Events$onClick(_user$project$Messages$NowPlaying)
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
@@ -58,7 +43,7 @@ var _user$project$Components_Navbar$view = function (navbar) {
 									_elm_lang$core$Basics_ops['++'],
 									'col-4 ',
 									A2(_user$project$Components_Navbar$isActive, navbar, 'Coming Soon'))),
-								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$ComingSoon)
+								_elm_lang$html$Html_Events$onClick(_user$project$Messages$ComingSoon)
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
@@ -73,7 +58,7 @@ var _user$project$Components_Navbar$view = function (navbar) {
 									_elm_lang$core$Basics_ops['++'],
 									'col-4 ',
 									A2(_user$project$Components_Navbar$isActive, navbar, 'Friends'))),
-								_elm_lang$html$Html_Events$onClick(_user$project$Components_Navbar$ShowFriends)
+								_elm_lang$html$Html_Events$onClick(_user$project$Messages$ShowFriends)
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[

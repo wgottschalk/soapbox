@@ -1,13 +1,14 @@
-module Animations exposing (..)
+module CardAnimations exposing (..)
 
-import Style exposing (animate, to)
-import Style.Properties exposing (..)
+import Animation.Model exposing (Animation)
+import Animation exposing (style, left, opacity, px)
 
 
-expandDownOut : PreAction
-expandDownOut =
-    animate
-        |> to
-            [ Width 100 Percent
-            , Height 100 Percent
-            ]
+closedParentStyle : Animation
+closedParentStyle =
+    style [ left (px 0.0) ]
+
+
+closedOverlayStyle : Animation
+closedOverlayStyle =
+    style [ opacity 0 ]
