@@ -12,6 +12,3 @@ type Msg
     | NowPlaying
     | ComingSoon
     | ShowFriends
-    | Expand
-    | Shrink
-    | Animate Animation.Msg

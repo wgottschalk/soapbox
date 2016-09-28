@@ -1,8 +1,5 @@
 module Model exposing (..)
 
-import Animation exposing (State, left, opacity, px)
-import CardAnimations exposing (closedParentStyle, closedOverlayStyle)
-
 
 type alias Model =
     { navbar : String
@@ -16,13 +13,6 @@ type alias Movie =
     , releaseDate : String
     , imgUrl : String
     , expanded : Bool
-    , style : CardStyle
-    }
-
-
-type alias CardStyle =
-    { parentStyle : State
-    , overlayStyle : State
     }
 
 
@@ -34,11 +24,3 @@ initMovie title summary release imgUrl =
         release
         imgUrl
         False
-        initMovieStyles
-
-
-initMovieStyles : CardStyle
-initMovieStyles =
-    { parentStyle = closedParentStyle
-    , overlayStyle = closedOverlayStyle
-    }

@@ -26,8 +26,3 @@ update msg model =
 
         Failed error ->
             model ! []
-
-        Expand ->
-
-        Shrink ->
-          
