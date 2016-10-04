@@ -1,6 +1,6 @@
 module Model exposing (..)
 
-import Movie.Movie exposing (Movie)
+import Movie.Model exposing (Movie)
 
 
 type alias Model =

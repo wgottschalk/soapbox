@@ -3,7 +3,7 @@ module Commands.Request exposing (..)
 import Types exposing (Msg(..))
 import Http exposing (Error, Data)
 import Task exposing (Task)
-import Movie.Movie exposing (Movie)
+import Movie.Model exposing (Movie)
 import Movie.Decoders exposing (movieListDecoder)
 
 

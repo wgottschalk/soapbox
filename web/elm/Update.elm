@@ -3,6 +3,7 @@ module Update exposing (..)
 import Types exposing (..)
 import Model exposing (Model)
 import Commands.Request exposing (fetchMovies)
+import Movie.Update as MovieUpdate
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -26,3 +27,12 @@ update msg model =
 
         Failed error ->
             model ! []
+
+        Scale dir target ->
+            let
+                updatedFeed =
+                    List.indexedMap
+                        (MovieUpdate.update dir target)
+                        model.feed
+            in
+                { model | feed = updatedFeed } ! []

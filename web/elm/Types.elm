@@ -1,7 +1,16 @@
 module Types exposing (..)
 
 import Http exposing (Error, Data)
-import Movie.Movie as Movie exposing (Movie)
+import Movie.Model exposing (Movie)
+
+
+type alias Id =
+    Int
+
+
+type Direction
+    = Up
+    | Down
 
 
 type Msg
@@ -11,3 +20,4 @@ type Msg
     | NowPlaying
     | ComingSoon
     | ShowFriends
+    | Scale Direction Id

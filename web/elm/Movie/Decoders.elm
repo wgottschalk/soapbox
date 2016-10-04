@@ -1,6 +1,6 @@
 module Movie.Decoders exposing (..)
 
-import Movie.Movie exposing (Movie, initMovie)
+import Movie.Model exposing (Movie, initMovie)
 import Json.Decode exposing (Decoder, (:=), string, object4, object3, list, int, oneOf)
 
 
