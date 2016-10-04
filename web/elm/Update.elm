@@ -1,7 +1,7 @@
 module Update exposing (..)
 
 import Types exposing (..)
-import Model exposing (Model, Movie)
+import Model exposing (Model)
 import Commands.Request exposing (fetchMovies)
 
 

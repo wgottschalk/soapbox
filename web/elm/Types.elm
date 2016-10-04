@@ -1,8 +1,7 @@
 module Types exposing (..)
 
 import Http exposing (Error, Data)
-import Model exposing (Movie)
-import Animation
+import Movie.Movie as Movie exposing (Movie)
 
 
 type Msg

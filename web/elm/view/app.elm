@@ -3,9 +3,10 @@ module View.App exposing (..)
 import Html exposing (Html, div, ul, li)
 import Html.Attributes exposing (class)
 import View.Navbar as Navbar
-import View.Movie as Movie
-import Types exposing (Msg)
+import Movie.Movie as Movie
+import Types exposing (Msg(..))
 import Model exposing (Model)
+import Html.App as App
 
 
 view : Model -> Html Msg

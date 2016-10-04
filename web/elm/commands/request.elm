@@ -3,8 +3,8 @@ module Commands.Request exposing (..)
 import Types exposing (Msg(..))
 import Http exposing (Error, Data)
 import Task exposing (Task)
-import Model exposing (Movie)
-import Decoders.Movie exposing (movieListDecoder)
+import Movie.Movie exposing (Movie)
+import Movie.Decoders exposing (movieListDecoder)
 
 
 fetchMovies : String -> Cmd Msg
