@@ -8,11 +8,6 @@ type alias Id =
     Int
 
 
-type Direction
-    = Up
-    | Down
-
-
 type Msg
     = ChangeTab String
     | Success (List Movie)
@@ -20,4 +15,5 @@ type Msg
     | NowPlaying
     | ComingSoon
     | ShowFriends
-    | Scale Direction Id
+    | OpenCard Id
+    | CloseCard Id

@@ -1,34 +1,31 @@
 module Movie.View exposing (..)
 
-import Html exposing (Html, Attribute, div, h2, p, hr, img, text, span, button)
+import Html exposing (Html, Attribute, div, h2, p, hr, img, text, span, button, i, h4)
 import Html.Attributes exposing (class, src, style)
 import Html.Events exposing (onClick)
 import Movie.Model exposing (Movie)
-import Types exposing (Msg(Scale), Direction(..), Id)
+import Types exposing (Msg(OpenCard, CloseCard))
 
 
 view : Movie -> Int -> Html Msg
 view { title, summary, releaseDate, imgUrl, expanded } key =
-    div [ class "card", onClick (scalingMsg expanded key) ]
+    div [ class "card", onClick (OpenCard key) ]
         [ div [ class "placeholder" ] []
-        , div [ cardStyles expanded ]
+        , div [ cardStyles expanded, class "card-content" ]
             [ img [ src imgUrl ] []
             , div [ (overlayStyles expanded), class "card-overlay" ]
-                [ h2 [] [ text title ]
-                , span [] [ text releaseDate ]
+                [ div [ class "back-button", onClick (CloseCard key) ]
+                    [ i [ class "material-icons" ] [ text "clear" ]
+                    ]
+                , h2 [] [ text title ]
+                , h4 [] [ text releaseDate ]
                 , p [ class "description" ] [ text summary ]
-                , button [ class "review-button" ] [ text "review" ]
+                , div [ class "button-container" ]
+                    [ button [ class "review-button material-icons" ] [ text "insert_comment" ]
+                    ]
                 ]
             ]
         ]
-
-
-scalingMsg : Bool -> Id -> Msg
-scalingMsg expanded key =
-    if expanded then
-        Scale Down key
-    else
-        Scale Up key
 
 
 overlayStyles : Bool -> Attribute a
@@ -36,7 +33,7 @@ overlayStyles expanded =
     if expanded then
         style [ ( "opacity", "1" ) ]
     else
-        style [ ( "opacity", "0" ) ]
+        style []
 
 
 cardStyles : Bool -> Attribute a

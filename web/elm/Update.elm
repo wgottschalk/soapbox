@@ -28,11 +28,30 @@ update msg model =
         Failed error ->
             model ! []
 
-        Scale dir target ->
+        OpenCard target ->
             let
                 updatedFeed =
                     List.indexedMap
-                        (MovieUpdate.update dir target)
+                        (\i movie ->
+                            if i == target then
+                                { movie | expanded = True }
+                            else
+                                movie
+                        )
+                        model.feed
+            in
+                { model | feed = updatedFeed } ! []
+
+        CloseCard target ->
+            let
+                updatedFeed =
+                    List.indexedMap
+                        (\i movie ->
+                            if i == target then
+                                { movie | expanded = True }
+                            else
+                                movie
+                        )
                         model.feed
             in
                 { model | feed = updatedFeed } ! []
