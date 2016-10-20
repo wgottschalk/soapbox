@@ -1,10 +1,9 @@
 module Main exposing (main)
 
 import Html.App as App
-import Model exposing (Model)
+import Model exposing (Model, Msg, init)
 import Update exposing (update)
-import View.App exposing (view)
-import Types exposing (Msg(..))
+import View exposing (view)
 import Commands.Request exposing (fetchMovies)
 
 
@@ -15,7 +14,7 @@ subscriptions model =
 
 init : ( Model, Cmd Msg )
 init =
-    Model "Now Playing" [] ! [ fetchMovies "Now Playing" ]
+    Model.init ! [ fetchMovies 0 ]
 
 
 main : Program Never

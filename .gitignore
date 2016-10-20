@@ -3,7 +3,7 @@
 /db
 /deps
 /*.ez
-/web/elm/elm-stuff/build-artifacts
+/web/elm/elm-stuff
 /web/static/vendor
 
 

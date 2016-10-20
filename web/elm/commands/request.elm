@@ -1,20 +1,20 @@
 module Commands.Request exposing (..)
 
-import Types exposing (Msg(..))
 import Http exposing (Error, Data)
 import Task exposing (Task)
-import Movie.Model exposing (Movie)
 import Movie.Decoders exposing (movieListDecoder)
+import Movie.Model exposing (Movie)
+import Model exposing (Msg(Failed, Success))
 
 
-fetchMovies : String -> Cmd Msg
-fetchMovies tabName =
-    case tabName of
-        "Now Playing" ->
+fetchMovies : Int -> Cmd Msg
+fetchMovies tabId =
+    case tabId of
+        0 ->
             getFeedItems "now_playing"
                 |> Task.perform Failed Success
 
-        "Coming Soon" ->
+        1 ->
             getFeedItems "coming_soon"
                 |> Task.perform Failed Success
 

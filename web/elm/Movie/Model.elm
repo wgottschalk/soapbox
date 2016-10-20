@@ -6,7 +6,6 @@ type alias Movie =
     , summary : String
     , releaseDate : String
     , imgUrl : String
-    , expanded : Bool
     }
 
 
@@ -17,4 +16,8 @@ initMovie title summary release imgUrl =
         summary
         release
         imgUrl
-        False
+
+
+update : Movie -> Movie
+update model =
+    model

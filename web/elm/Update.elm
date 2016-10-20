@@ -1,57 +1,32 @@
 module Update exposing (..)
 
-import Types exposing (..)
-import Model exposing (Model)
+import Model exposing (..)
+import Material
 import Commands.Request exposing (fetchMovies)
-import Movie.Update as MovieUpdate
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NowPlaying ->
-            model ! [ fetchMovies "Now Playing" ]
+        Mdl msg' ->
+            Material.update msg' model
 
-        ComingSoon ->
-            model ! [ fetchMovies "Coming Soon" ]
-
-        -- ShowFriends will be implemented later
-        ShowFriends ->
-            model ! []
-
-        ChangeTab tabName ->
-            { model | navbar = tabName } ! []
+        SelectTab tab ->
+            ( { model | selectedTab = tab }
+            , fetchMovies tab
+            )
 
         Success movieList ->
-            { model | feed = movieList } ! []
+            { model | movies = movieList } ! []
 
         Failed error ->
             model ! []
 
-        OpenCard target ->
-            let
-                updatedFeed =
-                    List.indexedMap
-                        (\i movie ->
-                            if i == target then
-                                { movie | expanded = True }
-                            else
-                                movie
-                        )
-                        model.feed
-            in
-                { model | feed = updatedFeed } ! []
+        OpenCard id ->
+            { model | openedCard = id, isOpen = True } ! []
 
-        CloseCard target ->
-            let
-                updatedFeed =
-                    List.indexedMap
-                        (\i movie ->
-                            if i == target then
-                                { movie | expanded = True }
-                            else
-                                movie
-                        )
-                        model.feed
-            in
-                { model | feed = updatedFeed } ! []
+        CloseCard ->
+            { model | isOpen = False } ! []
+
+        NoOp ->
+            model ! []

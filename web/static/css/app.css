@@ -18,7 +18,7 @@ body {
 }
 
 /*         Grid Styles         */
-.row {
+/*.row {
   position: relative;
   width: 100%;
 }
@@ -35,116 +35,107 @@ body {
 .col-4 {
   width: 28.33%;
   margin: auto;
-}
+}*/
 
 /*         Navbar Styles       */
 nav {
   background-color: #3a77f5;
 }
 
-.navbar ul {
-  padding: 10px 0;
-  margin: 0;
-}
-.navbar li {
-  color: white;
-  display: inline;
-  font-size: 16px;
-  text-align: center;
-  padding: 3px auto;
-}
-
 /*         Feed Styles         */
+
 .feed {
-  margin: 10px auto;
-  max-width: 480px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding-right: 5px;
-  padding-left: 5px;
-  overflow: hidden;
+  position: relative;
+  padding: 0 15px;
 }
 
-.feed li {
-  display: inline-block;
-  width: 48%;
+li {
+  display: inline
 }
 /*         Card Styles         */
-.card {
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  position: relative;
-  margin-bottom: 8px;
+
+body {
+  overflow-x: hidden;
 }
 
-img {
-  width: 100%;
-  height:100%;
-}
-
-.card p {
-  font-size: 18px;
-  font-weight: 200;
-}
-
-.card h2 {
-  margin: 0;
-  padding: 8px 8px 8px 18px;
-  text-align: left;
-  font-size: 36px;
-  font-weight: 400;
-}
-
-.card h4 {
-  font-size: 14px;
-  padding-bottom: 6px;
-  padding-left: 18px;
-  text-align: left;
-}
-
-.description {
-  overflow: hidden;
-  line-height: 1.8rem;
-  padding: 5px 20px 13px 20px;
-}
-
-.card-overlay {
+.wrapper {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
   top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  -webkit-transition: left 500ms ease;
+  -moz-transition: left 500ms ease;
+  transition: left 300ms ease;
+}
+
+.app-view {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  display: inline;
+  margin: 14px 0 0 14px;
+  height: 270px;
+  width: 170px !important;
+  float: left;
+}
+
+.wrapper > div {
+  float: left;
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.8);
   height: 100%;
   width: 100%;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 1 ease;
 }
 
-.button-container {
+.overlay-container {
+  padding: 24px;
+  color: white;
+  font-weight: 100;
+}
+
+.overlay-container h2,
+.overlay-container h4,
+.overlay-container p {
+  font-weight: 100;
+}
+
+.overlay-container h2 {
+  margin-bottom: 0;
+}
+
+.overlay-container h4 {
+  font-size: 14px;
+  margin-top: 0;
+}
+
+.overlay-container p {
+  font-size: 16px;
+}
+
+.material-icons {
+  color: white;
+}
+
+.back {
+  float: right;
+}
+
+.wrapper.open {
+  width: 200%;
+  left: -100%;
+}
+
+.rating-button {
   position: absolute;
-  bottom: 28px;
-  width: 100%;
-}
-
-.review-button {
-  display: block;
-  margin: 5px auto;
-  font-size: 26px;
-  border-radius: 50%;
-  border: none;
-  padding: 20px;
-  background-color: #3a77f5;
-  color: #F9F9F9;
-  position: relative;
-}
-
-.back-button {
-  text-align: right;
-}
-
-.back-button > i {
-  font-size: 28px;
-  padding: 16px 16px 0 16px;
+  bottom: 30px;
+  right: 30px;
 }
