@@ -1,17 +1,17 @@
 module Movie.View exposing (..)
 
-import Material
 import Material.Elevation as Elevation
 import Material.Options exposing (css, cs)
 import Material.Card as Card
-import Material.Button as Button
 import Material.Icon as Icon
 import Material.Options as Options
 import Movie.Model exposing (Movie)
 import Model exposing (Msg(Mdl, OpenCard, CloseCard))
-import Html.Attributes exposing (class, style)
+import Html.Attributes exposing (class, style, id)
 import Html.Events exposing (onClick)
-import Html exposing (Html, div, h2, h4, text, i, p, span)
+import Html exposing (Html, div, h2, h4, text, i, p, span, header)
+import Rating.View as Rating
+import Model exposing (Model)
 
 
 renderCard : Int -> Movie -> Html Msg
@@ -28,8 +28,8 @@ renderCard id { title, summary, releaseDate, imgUrl } =
         []
 
 
-renderDetails : Material.Model -> Maybe Movie -> Html Msg
-renderDetails mdl movie =
+renderDetails : Model -> Maybe Movie -> Html Msg
+renderDetails { mdl, rating } movie =
     case movie of
         Just { title, summary, releaseDate, imgUrl } ->
             let
@@ -43,29 +43,18 @@ renderDetails mdl movie =
             in
                 div [ class "details", backgroundCss ]
                     [ div [ class "overlay" ]
-                        [ div [ class "overlay-container" ]
-                            [ span [ class "back", onClick CloseCard ] [ Icon.i "clear" ]
-                            , h2 [] [ text title ]
+                        [ header [ id "back-header", class "mdl-shadow--2dp" ]
+                            [ span [ class "back", onClick CloseCard ]
+                                [ Icon.i "chevron_left", text "BACK" ]
+                            ]
+                        , div [ class "overlay-container" ]
+                            [ h2 [] [ text title ]
                             , h4 [] [ text releaseDate ]
                             , p [] [ text summary ]
-                            , ratingButton mdl
+                            , Rating.ratingButton mdl rating
                             ]
                         ]
                     ]
 
         Nothing ->
             div [ class "details" ] [ text "there is nothing here" ]
-
-
-ratingButton : Material.Model -> Html Msg
-ratingButton mdl =
-    div [ class "rating-button" ]
-        [ Button.render Mdl
-            [ 0 ]
-            mdl
-            [ Button.fab
-            , Button.colored
-            , Button.ripple
-            ]
-            [ Icon.i "insert_comment" ]
-        ]

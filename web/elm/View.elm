@@ -25,7 +25,7 @@ view model =
                 else
                     "wrapper"
             ]
-            [ Material.Scheme.topWithScheme Color.Red Color.LightBlue <|
+            [ Material.Scheme.topWithScheme Color.BlueGrey Color.Blue <|
                 Layout.render Mdl
                     model.mdl
                     [ Layout.fixedHeader
@@ -36,9 +36,9 @@ view model =
                     { header = []
                     , drawer = []
                     , tabs = ( Tabs.view model, [] )
-                    , main = renderMovies model.movies
+                    , main = [ div [ class "container" ] (renderMovies model.movies) ]
                     }
-            , Movie.renderDetails model.mdl <|
+            , Movie.renderDetails model <|
                 getActiveMovie model.openedCard 0 model.movies
             ]
         ]

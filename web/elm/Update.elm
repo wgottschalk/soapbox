@@ -3,6 +3,7 @@ module Update exposing (..)
 import Model exposing (..)
 import Material
 import Commands.Request exposing (fetchMovies)
+import Rating.Model exposing (Rating)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -27,6 +28,12 @@ update msg model =
 
         CloseCard ->
             { model | isOpen = False } ! []
+
+        ShowRatings ->
+            { model | rating = Rating True } ! []
+
+        HideRatings ->
+            { model | rating = Rating False } ! []
 
         NoOp ->
             model ! []

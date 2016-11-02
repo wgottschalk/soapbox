@@ -2,6 +2,7 @@ module Model exposing (..)
 
 import Material
 import Movie.Model exposing (Movie)
+import Rating.Model as Rating exposing (Rating)
 import Http exposing (Error)
 
 
@@ -13,6 +14,8 @@ type Msg
     | NoOp
     | CloseCard
     | OpenCard Int
+    | ShowRatings
+    | HideRatings
 
 
 type alias Model =
@@ -21,6 +24,7 @@ type alias Model =
     , movies : List Movie
     , openedCard : Int
     , isOpen : Bool
+    , rating : Rating
     }
 
 
@@ -32,3 +36,4 @@ init =
         []
         0
         False
+        Rating.init
