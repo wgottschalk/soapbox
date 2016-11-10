@@ -1,0 +1,26 @@
+var _user$project$Components_Feed$movieOrFriend = function (card) {
+	var _p0 = card;
+	if (_p0.ctor === 'Movie') {
+		return _user$project$Components_Movie$view(_p0._0);
+	} else {
+		return _user$project$Components_Friend$view(_p0._0);
+	}
+};
+var _user$project$Components_Feed$renderItems = function (feed) {
+	return A2(_elm_lang$core$List$map, _user$project$Components_Feed$movieOrFriend, feed);
+};
+var _user$project$Components_Feed$view = function (feed) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$class('feed container')
+			]),
+		_user$project$Components_Feed$renderItems(feed));
+};
+var _user$project$Components_Feed$Friend = function (a) {
+	return {ctor: 'Friend', _0: a};
+};
+var _user$project$Components_Feed$Movie = function (a) {
+	return {ctor: 'Movie', _0: a};
+};

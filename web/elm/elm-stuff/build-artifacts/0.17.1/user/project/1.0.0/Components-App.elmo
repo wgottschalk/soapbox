@@ -1,0 +1,120 @@
+var _user$project$Components_App$friendObjects = A4(
+	_elm_lang$core$Json_Decode$object3,
+	F3(
+		function (a, b, c) {
+			return _user$project$Components_Feed$Friend(
+				A3(_user$project$Components_Friend$Model, a, b, c));
+		}),
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'username', _elm_lang$core$Json_Decode$string),
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'age', _elm_lang$core$Json_Decode$int),
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'profile', _elm_lang$core$Json_Decode$string));
+var _user$project$Components_App$movieObjects = A5(
+	_elm_lang$core$Json_Decode$object4,
+	F4(
+		function (a, b, c, d) {
+			return _user$project$Components_Feed$Movie(
+				A4(_user$project$Components_Movie$init, a, b, c, d));
+		}),
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'title', _elm_lang$core$Json_Decode$string),
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'summary', _elm_lang$core$Json_Decode$string),
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'release_date', _elm_lang$core$Json_Decode$string),
+	A2(_elm_lang$core$Json_Decode_ops[':='], 'img_url', _elm_lang$core$Json_Decode$string));
+var _user$project$Components_App$movieListDecoder = A2(
+	_elm_lang$core$Json_Decode_ops[':='],
+	'movies',
+	_elm_lang$core$Json_Decode$list(
+		_elm_lang$core$Json_Decode$oneOf(
+			_elm_lang$core$Native_List.fromArray(
+				[_user$project$Components_App$movieObjects, _user$project$Components_App$friendObjects]))));
+var _user$project$Components_App$getFeedItems = function (url) {
+	return A2(
+		_evancz$elm_http$Http$get,
+		_user$project$Components_App$movieListDecoder,
+		A2(_elm_lang$core$Basics_ops['++'], 'http://localhost:4000/api/', url));
+};
+var _user$project$Components_App$Model = F2(
+	function (a, b) {
+		return {navbar: a, feed: b};
+	});
+var _user$project$Components_App$Failed = function (a) {
+	return {ctor: 'Failed', _0: a};
+};
+var _user$project$Components_App$Success = function (a) {
+	return {ctor: 'Success', _0: a};
+};
+var _user$project$Components_App$fetchMovies = function (tabName) {
+	var _p0 = tabName;
+	switch (_p0) {
+		case 'Now Playing':
+			return A3(
+				_elm_lang$core$Task$perform,
+				_user$project$Components_App$Failed,
+				_user$project$Components_App$Success,
+				_user$project$Components_App$getFeedItems('now_playing'));
+		case 'Coming Soon':
+			return A3(
+				_elm_lang$core$Task$perform,
+				_user$project$Components_App$Failed,
+				_user$project$Components_App$Success,
+				_user$project$Components_App$getFeedItems('coming_soon'));
+		default:
+			return _elm_lang$core$Platform_Cmd$none;
+	}
+};
+var _user$project$Components_App$init = A2(
+	_elm_lang$core$Platform_Cmd_ops['!'],
+	A2(
+		_user$project$Components_App$Model,
+		'Now Playing',
+		_elm_lang$core$Native_List.fromArray(
+			[])),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_user$project$Components_App$fetchMovies('Now Playing')
+		]));
+var _user$project$Components_App$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'ChangeTab':
+				var newTab = A2(_user$project$Components_Navbar$update, _p1._0, model.navbar);
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{navbar: newTab}),
+					_1: _user$project$Components_App$fetchMovies(newTab)
+				};
+			case 'Success':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{feed: _p1._0}),
+					_elm_lang$core$Native_List.fromArray(
+						[]));
+			default:
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					model,
+					_elm_lang$core$Native_List.fromArray(
+						[]));
+		}
+	});
+var _user$project$Components_App$ChangeTab = function (a) {
+	return {ctor: 'ChangeTab', _0: a};
+};
+var _user$project$Components_App$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html_App$map,
+				_user$project$Components_App$ChangeTab,
+				_user$project$Components_Navbar$view(model.navbar)),
+				_user$project$Components_Feed$view(model.feed)
+			]));
+};
