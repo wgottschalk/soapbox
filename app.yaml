@@ -1,0 +1,4 @@
+runtime: custom
+vm: true
+
+# soapbox willg$ gcloud app deploy --project=soapbox-1308 --version=1 app.yaml1

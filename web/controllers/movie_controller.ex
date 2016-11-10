@@ -32,7 +32,7 @@ defmodule Soapbox.MovieController do
       date_b = Date.from_iso8601!(movie_b["release_date"])
       Timex.compare(date_a, date_b, :days) > 0
     end)
-    |> Enum.map fn(movie) ->
+    |> Enum.map( fn(movie) ->
       img_url = if movie["poster_path"] do
         @base_url <> movie["poster_path"]
       else
@@ -45,7 +45,7 @@ defmodule Soapbox.MovieController do
         img_url: img_url,
         release_date: format_date movie["release_date"]
       }
-    end
+    end)
 
   end
 
