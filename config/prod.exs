@@ -13,9 +13,13 @@ use Mix.Config
 # which you typically run after static files are built.
 config :soapbox, Soapbox.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "soapbox.com", port: 8080],
+  url: [scheme: "https", host: "soapbox-movies.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json",
-  server: true
+  # server: true,
+  # root: ".",
+  # version: Mix.Project.config[:version]
+  secret_key_base: System.get_env("SECRET_BASE_KEY")
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -50,7 +54,7 @@ config :logger, level: :info
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
 #
-#     config :phoenix, :serve_endpoints, true
+config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
@@ -64,4 +68,5 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+
+# import_config "prod.secret.exs"

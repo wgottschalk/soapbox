@@ -24,4 +24,4 @@ fetchMovies tabId =
 
 getFeedItems : String -> Task Error (List Movie)
 getFeedItems url =
-    Http.get movieListDecoder ("http://localhost:4000/api/" ++ url)
+    Http.get movieListDecoder ("/api/" ++ url)

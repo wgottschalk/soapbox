@@ -25,7 +25,7 @@ view model =
                 else
                     "wrapper"
             ]
-            [ Material.Scheme.topWithScheme Color.BlueGrey Color.Blue <|
+            [ Material.Scheme.topWithScheme Color.Blue Color.Indigo <|
                 Layout.render Mdl
                     model.mdl
                     [ Layout.fixedHeader

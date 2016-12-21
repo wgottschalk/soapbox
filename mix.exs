@@ -3,7 +3,7 @@ defmodule Soapbox.Mixfile do
 
   def project do
     [app: :soapbox,
-     version: "0.0.2",
+     version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -27,7 +27,6 @@ defmodule Soapbox.Mixfile do
   defp elixirc_paths(_),     do: ["lib", "web"]
 
   # Specifies your project dependencies.
-  #
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.1.4"},
@@ -38,7 +37,6 @@ defmodule Soapbox.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:timex, "~> 3.0"},
-     {:exrm, "~> 1.0.8"},
      {:cowboy, "~> 1.0"}]
   end
 

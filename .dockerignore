@@ -1,0 +1,9 @@
+deps
+_build
+ecl_Crash.dump
+node_modules
+uploads/files/*
+web/elm/elm-stuff
+rel
+.git
+.gitignore

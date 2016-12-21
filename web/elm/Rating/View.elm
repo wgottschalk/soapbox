@@ -4,6 +4,7 @@ import Material
 import Material.Button as Button
 import Material.Icon as Icon
 import Material.Options as Options
+import Material.Color as Color
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
@@ -64,6 +65,7 @@ renderGrade mdl { isOpen } letter =
         [ Button.icon
         , Button.raised
         , Button.ripple
+        , Button.accent
         , Options.id ("grade" ++ letter)
         , Options.cs "grade"
         ]
