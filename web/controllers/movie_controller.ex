@@ -18,7 +18,7 @@ defmodule Soapbox.MovieController do
     {:ok, %{"results" => results}} = Poison.decode body
     conn
     |> put_status(200)
-    |> json(%{movies: Enum.reverse scrub_movies(results)})
+    |> json( %{movies: Enum.reverse scrub_movies(results)} )
   end
 
   # backdrop_path
