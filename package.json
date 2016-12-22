@@ -1,7 +1,8 @@
 {
   "repository": {},
   "scripts": {
-    "start": "webpack --watch-stdin --progress --color"
+    "start": "webpack --watch-stdin --progress --color",
+    "elm-install": "cd web/elm && ../../node_modules/.bin/elm package install"
   },
   "dependencies": {
     "elm": "^0.17.0",
