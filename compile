@@ -1,4 +1,5 @@
 #! /bin/bash
 
+npm install
 NODE_ENV=prod webpack -p
 mix phoenix.digest
