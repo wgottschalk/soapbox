@@ -13,17 +13,18 @@ use Mix.Config
 # which you typically run after static files are built.
 config :soapbox, Soapbox.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [scheme: "https", host: "soapbox-movies.herokuapp.com", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "soapbox.com"],
   cache_static_manifest: "priv/static/manifest.json",
-  # server: true,
-  # root: ".",
-  # version: Mix.Project.config[:version]
-  secret_key_base: System.get_env("SECRET_BASE_KEY")
+  server: true,
+  root: ".",
+  version: Mix.Project.config[:version]
 
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :soapbox, Soapbox.Repo
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL")
 
 # ## SSL Support
 #
@@ -68,5 +69,4 @@ config :phoenix, :serve_endpoints, true
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-
-# import_config "prod.secret.exs"
+import_config "prod.secret.exs"
