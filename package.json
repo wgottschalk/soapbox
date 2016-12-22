@@ -4,7 +4,7 @@
     "start": "webpack --watch-stdin --progress --color"
   },
   "dependencies": {
-    "elm": "^0.18.0",
+    "elm": "^0.17.0",
     "elm-webpack-loader": "^3.0.6",
     "glob": "^7.1.1",
     "phoenix": "file:deps/phoenix",
