@@ -1,0 +1,4 @@
+#! /bin/bash
+
+NODE_ENV=prod webpack -p
+mix phoenix.digest
